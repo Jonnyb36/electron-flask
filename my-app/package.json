@@ -33,7 +33,9 @@
     "pack": "build --dir",
     "dist": "yarn run build && build",
     "package-electron": "electron-builder",
+    "package-python": "../make.bat",
     "package-cleanup": "rm -rf build && rm -rf run_app.spec && rm -rf dist-python",
+    "package": "yarn run -s package-python && yarn run -s package-electron && yarn run -s package-cleanup",
     "postinstall": "install-app-deps"
   },
   "build": {

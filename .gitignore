@@ -9,3 +9,6 @@ node_modules/
 package-lock.json
 *.spec
 my-app/release
+my-app/dist-python
+my-app/dist
+.venv

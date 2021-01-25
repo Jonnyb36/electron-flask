@@ -1,26 +1,26 @@
 from flask import Flask, render_template
 import os
 import sys
-from app.home import home as home_blueprint
+from .home import home as home_blueprint
 from pathlib import Path
-
-
-def init_extensions(app: Flask):
-    # use .init_app() on your extensions to register them on
-    # the Flask instance
-    pass
 
 
 def get_root_dir_abs_path() -> str:
     """
     Get the absolute path to the root directory of the application.
     """
-    # Check if the application runs in a bundled executable from PyInstaller.
-    # When executed, the bundled executable get's unpacked into the temporary directory sys._MEIPASS.
-    # See also: https://pyinstaller.readthedocs.io/en/stable/runtime-information.html#using-file
-    # return getattr(sys, "_MEIPASS", os.path.abspath(os.path.dirname(__file__)))
-    return Path(".").resolve() / "my-app" / "build"
+    if getattr(sys, "frozen", False):
+        bundle_dir  = Path(sys._MEIPASS).resolve()
+    else:
+        bundle_dir = Path(".").resolve() / "my-app" 
+    root_dir_abs_path = bundle_dir / "build"
+    print(root_dir_abs_path)
+    return root_dir_abs_path
 
+def init_extensions(app: Flask):
+    # use .init_app() on your extensions to register them on
+    # the Flask instance
+    pass
 
 def create_app(config_object_name) -> Flask:
     """
