@@ -1,0 +1,75 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.1.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "foreman": "^3.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.1.3",
+    "react-scripts": "4.0.1"
+  },
+  "homepage": "./",
+  "main": "src/start.js",
+  "scripts": {
+    "start": "nf start -p 3000",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-start": "node src/start-react",
+    "electron-dev": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "electron-builder build -c.extraMetadata.main=build/electron.js",
+    "react-start": "react-scripts start",
+    "pack": "build --dir",
+    "dist": "yarn run build && build",
+    "package-electron": "electron-builder",
+    "package-cleanup": "rm -rf build && rm -rf run_app.spec && rm -rf dist-python",
+    "postinstall": "install-app-deps"
+  },
+  "build": {
+    "productName": "Flask_Electron",
+    "appId": "com.electron.electron-with-create-react-app",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "msi"
+      ],
+      "icon": "build/logo512.png"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "electron": "^11.0.3",
+    "electron-builder": "^22.9.1",
+    "wait-on": "^5.2.0"
+  }
+}

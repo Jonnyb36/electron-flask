@@ -1,0 +1,1 @@
+Powershell.exe -executionpolicy ByPass -File  .\make.ps1
