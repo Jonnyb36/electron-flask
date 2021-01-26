@@ -25,10 +25,26 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
+            // "skipFiles": [
+            //     "<node_internals>/**"
+            // ],
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}\\main.js",
+            "runtimeExecutable": "${workspaceFolder}/my-app/node_modules/.bin/electron",
+            "windows": {
+                "runtimeExecutable": "${workspaceFolder}/my-app/node_modules/.bin/electron.cmd"
+            },            
+            "args" : ["."],
+            "outputCapture": "std"
+        },
+        {
+            "type": "electron",
+            "request": "launch",
+            "name": "Launch Start.js",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\renderer.js"
+            "program": "${workspaceFolder}\\my-app\\src\\start.js"
         }
     ]
 }

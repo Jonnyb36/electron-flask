@@ -27,7 +27,7 @@ const isRunningInBundle = () => {
 
 const getPythonScriptPath = () => {
   if (!isRunningInBundle()) {
-    return path.join(path.dirname(path.resolve()), PY_MODULE);
+    return path.join(__dirname, PY_MODULE);
   }
   if (process.platform === "win32") {
     return path.join(
@@ -36,7 +36,7 @@ const getPythonScriptPath = () => {
       "Flask_Electron.exe"
     );
   }
-  return path.join(path.resolve(), PY_MODULE);
+  return path.join(__dirname, PY_MODULE);
 };
 
 const startPythonSubprocess = () => {
@@ -103,17 +103,19 @@ const createMainWindow = () => {
   });
 
   // Load the index page
-  // mainWindow.loadURL("http://localhost:3000/");
+  mainWindow.loadURL("http://localhost:3000/");
+  // my-app\build\index.html
 
-  console.log(process.env.ELECTRON_START_URL)
-  mainWindow.loadURL(
-    process.env.ELECTRON_START_URL ||
-      url.format({
-        pathname: path.join(__dirname, '/../public/index.html'),
-        protocol: 'file:',
-        slashes: true,
-      })
-  )
+  // mainWindow.loadURL(`file://${__dirname}/my-app/build/index.html`)
+  // console.log(process.env.ELECTRON_START_URL)
+  // mainWindow.loadURL(
+  //   process.env.ELECTRON_START_URL ||
+  //     url.format({
+  //       pathname: path.join(__dirname, '/../public/index.html'),
+  //       protocol: 'file:',
+  //       slashes: true,
+  //     })
+  // )
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();

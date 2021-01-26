@@ -17,7 +17,7 @@ function Abort-OnError {
 # cd ..
 
 # add onefile below when working
-pipenv run pyinstaller ..\run_app.py -n "Flask_Electron" -y --clean `
+pipenv run pyinstaller ..\run_app.py -n "Flask_Electron" -y --clean --onefile `
 --add-data "./build/;build" `
 --hiddenimport pkg_resources.py2_warn `
 --distpath dist-python
