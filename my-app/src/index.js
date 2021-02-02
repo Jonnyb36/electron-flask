@@ -1,10 +1,18 @@
 import React from 'react';
+// const { React} = require('react')
+// const { ReactDOM} = require('react-dom')
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/css/animate.min.css";
+import "./assets/scss/light-bootstrap-dashboard-react.scss?v=2.0.0";
+import "./assets/css/demo.css";
+// import "@fortawesome/fontawesome-free/css/all.min.css";
 
 ReactDOM.render(
   <React.StrictMode>

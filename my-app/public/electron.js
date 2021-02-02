@@ -1,3 +1,4 @@
+import installExtension, { REDUX_DEVTOOLS } from 'electron-devtools-installer';
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -15,7 +16,12 @@ function createWindow() {
   mainWindow.on('closed', () => mainWindow = null);
 }
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+  installExtension(REDUX_DEVTOOLS)
+    .then((name) => console.log(`Added Extension:  ${name}`))
+    .catch((err) => console.log('An error occurred: ', err));
+  createWindow
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

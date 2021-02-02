@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Front End",
+            "program": "${workspaceFolder}/my-app/src/App.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+        {
             "name": "Python: Flask",
             "type": "python",
             "request": "launch",
@@ -24,7 +33,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Build",
             // "skipFiles": [
             //     "<node_internals>/**"
             // ],
@@ -45,6 +54,22 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\my-app\\src\\start.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch via Yarn",
+            "runtimeExecutable": "yarn",
+            "cwd": "${workspaceFolder}/my-app",
+            "runtimeArgs": ["start:debug"],
+            "port": 5858
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/my-app/src",
         }
     ]
 }
